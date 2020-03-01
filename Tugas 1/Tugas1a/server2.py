@@ -22,5 +22,6 @@ while True:
             hasil.close()
             break
         hasil.write(data)
+    print("File Berhasil di terima")
     # Clean up the connection
     connection.close()
