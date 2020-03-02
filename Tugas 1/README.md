@@ -40,3 +40,20 @@
 ![temansaya_server_hasil](https://user-images.githubusercontent.com/45732575/75715679-6428cc80-5d00-11ea-9357-0b0184d99689.png)
 
 
+<h3>Server dijalankan di Laptop Saya, client(Laptop yang lain) untuk request file untuk dikirimkan dari server</h3>
+<p>Kondisi awal server di pc saya(IP=192.168.1.123)</p>
+
+![saya_server](https://user-images.githubusercontent.com/45732575/75716132-32fccc00-5d01-11ea-919c-dfa31f09c4ef.png)
+
+
+<p>Client(IP=192.168.1.130) meminta dan mendapatkan file dengan nama surabaya.jpg</p>
+
+![temansaya_client](https://user-images.githubusercontent.com/45732575/75716284-748d7700-5d01-11ea-830d-2b46a9c128a9.jpg)
+
+<p>Server menerima request dan mengirimkan file yang ada</p>
+
+![saya_server_diterima](https://user-images.githubusercontent.com/45732575/75716527-eebdfb80-5d01-11ea-9d8e-c43260377b6d.png)
+
+<p>Client telah berhasil mendapatkan file dengan nama "hasil surabaya.jpg"</p>
+
+![temansaya_client_hasil](https://user-images.githubusercontent.com/45732575/75716594-17de8c00-5d02-11ea-9bf2-31cc50ea5b29.jpg)
