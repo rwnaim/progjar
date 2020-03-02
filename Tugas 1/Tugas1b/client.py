@@ -10,7 +10,7 @@ print(f"connecting to {server_address}")
 sock.connect(server_address)
 try:
     # Send data
-    file_name = "city2.jpg"
+    file_name = "untitled.png"
     content = file_name
     print ('sending data...')
     sock.sendall(content.encode())
