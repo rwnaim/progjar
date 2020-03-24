@@ -40,10 +40,10 @@ class Machine:
                 filename = cstring[1].strip()
                 file = cstring[2].strip()
                 # print(file)
-                print("Adding",filename)
+                print("Menambahkan",filename)
                 # print()
                 p.add(filename,file.encode())
-                return "File Added"
+                return "File telah ditambahkan"
 
             elif (command=='list'):
                 logging.info("list")
