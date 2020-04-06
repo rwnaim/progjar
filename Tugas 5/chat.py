@@ -22,10 +22,10 @@ class Chat:
         j = data.split(" ")
         try:
             command = j[0].strip()
-            if (command == 'auth'):
+            if (command == 'login'):
                 username = j[1].strip()
                 password = j[2].strip()
-                logging.warning("AUTH: auth {} {}".format(username, password))
+                logging.warning("AUTH: login {} {}".format(username, password))
                 return self.autentikasi_user(username, password)
             elif (command == 'send'):
                 sessionid = j[1].strip()
@@ -126,7 +126,7 @@ class Chat:
 
 if __name__ == "__main__":
     j = Chat()
-    sesi = j.proses("auth messi surabaya")
+    sesi = j.proses("login messi surabaya")
     print(sesi)
     # sesi = j.autentikasi_user('messi','surabaya')
     # print sesi
@@ -143,5 +143,5 @@ if __name__ == "__main__":
     # print("isi mailbox dari henderson")
     # print(j.get_inbox('henderson'))
     print(j.logout_user(tokenid))
-    sesi = j.proses("auth lineker surabaya")
+    sesi = j.proses("login lineker surabaya")
     print(j.get_show_user())
