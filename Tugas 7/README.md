@@ -1,6 +1,6 @@
 <h1>Tugas 7</h1>
 
-<h2>Hasil test Apache Benchmark dengan Jumlah Request 10</h2>
+<h2>Hasil Performance Test Menggunakan Apache Benchmark dengan Jumlah Request 10</h2>
 
 <h3>Concurrency Level 1</h3>
 
@@ -14,7 +14,7 @@
 
 ![10_10](https://user-images.githubusercontent.com/45732575/79361176-28c02580-7f6f-11ea-888b-f02798f4a9be.png)
 
-<h2>Hasil test Apache Benchmark dengan Jumlah Request 50</h2>
+<h2>Hasil Performance Test Menggunakan Apache Benchmark dengan Jumlah Request 50</h2>
 
 <h3>Concurrency Level 1</h3>
 
@@ -32,7 +32,7 @@
 
 ![50_50](https://user-images.githubusercontent.com/45732575/79361401-72107500-7f6f-11ea-8657-08cdec35df94.png)
 
-<h2>Hasil test Apache Benchmark dengan Jumlah Request 100</h2>
+<h2>Hasil Performance Test Menggunakan Apache Benchmark dengan Jumlah Request 1</h2>
 
 <h3>Concurrency Level 1</h3>
 
@@ -49,3 +49,8 @@
 <h3>Concurrency Level 100</h3>
 
 ![100_100](https://user-images.githubusercontent.com/45732575/79361564-a5530400-7f6f-11ea-8d8c-26f1f1d7c7b7.png)
+
+<h3>Tabulasi Hasil dari Performance Test  Menggunakan Apache Benchmark</h3>
+
+![Tabel](https://user-images.githubusercontent.com/45732575/79361805-fd8a0600-7f6f-11ea-9aaa-05b6d27838f0.png)
+
