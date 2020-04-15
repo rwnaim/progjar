@@ -50,7 +50,7 @@
 
 ![100_100](https://user-images.githubusercontent.com/45732575/79361564-a5530400-7f6f-11ea-8d8c-26f1f1d7c7b7.png)
 
-<h3>Tabulasi Hasil dari Performance Test  Menggunakan Apache Benchmark</h3>
+<h3>Hasil Tabulasi Performance Test Menggunakan Apache Benchmark</h3>
 
 ![Tabel](https://user-images.githubusercontent.com/45732575/79361805-fd8a0600-7f6f-11ea-9aaa-05b6d27838f0.png)
 
