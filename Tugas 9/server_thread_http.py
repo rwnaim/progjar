@@ -25,11 +25,11 @@ class ProcessTheClient(threading.Thread):
 					rcv=rcv+d
 					if rcv[-2:]=='\r\n':
 						#end of command, proses string
-						# logging.warning("data dari client: {}" . format(rcv))
+						#logging.warning("data dari client: {}" . format(rcv))
 						hasil = httpserver.proses(rcv)
-						hasil=hasil+"\r\n\r\n"
+						hasil=hasil+"\r\n\r\n".encode()
 						# logging.warning("balas ke  client: {}" . format(hasil))
-						self.connection.sendall(hasil.encode())
+						self.connection.sendall(hasil)
 						rcv=""
 						self.connection.close()
 				else:
@@ -48,7 +48,7 @@ class Server(threading.Thread):
 		threading.Thread.__init__(self)
 
 	def run(self):
-		self.my_socket.bind(('0.0.0.0', 10001))
+		self.my_socket.bind(('0.0.0.0', 46000))
 		self.my_socket.listen(1)
 		while True:
 			self.connection, self.client_address = self.my_socket.accept()
@@ -66,3 +66,4 @@ def main():
 
 if __name__=="__main__":
 	main()
+
