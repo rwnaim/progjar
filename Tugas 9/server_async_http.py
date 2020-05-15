@@ -46,7 +46,7 @@ class Server(asyncore.dispatcher):
 			handler = ProcessTheClient(sock)
 
 def main():
-	portnumber=45000
+	portnumber=8887
 	try:
 		portnumber=int(sys.argv[1])
 	except:

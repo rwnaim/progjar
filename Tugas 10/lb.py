@@ -2,12 +2,12 @@ import socket
 import time
 import sys
 import asyncore
-
+import logging
 
 class BackendList:
 	def __init__(self):
 		self.servers=[]
-		self.servers.append(('127.0.0.1',9001))
+		# self.servers.append(('127.0.0.1',9001))
 		self.servers.append(('127.0.0.1',9002))
 		self.servers.append(('127.0.0.1',9003))
 		self.servers.append(('127.0.0.1',9004))
@@ -48,27 +48,37 @@ class ProcessTheClient(asyncore.dispatcher):
 	    self.close()
 
 class Server(asyncore.dispatcher):
-	def __init__(self):
-                asyncore.dispatcher.__init__(self)
+	def __init__(self, portnumber):
+		asyncore.dispatcher.__init__(self)
 		self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
-                self.set_reuse_addr()
-		self.bind(('0.0.0.0',8885))
-                self.listen(5)
+		self.set_reuse_addr()
+		self.bind(('',portnumber))
+		self.listen(5)
 		self.bservers = BackendList()
+		logging.warning("Load Balancer berjalan pada port {}".format(portnumber))
 
 	def handle_accept(self):
-                pair = self.accept()
-                if pair is not None:
-		        sock, addr = pair
-		        print >> sys.stderr, 'connection from', repr(addr)
-			backend = Backend(self.bservers.getserver())
-	                handler = ProcessTheClient(sock)
-			handler.backend = backend
+			pair = self.accept()
+			if pair is not None:
+				sock, addr = pair
+				logging.warning("Koneksi dari {}".format(repr(addr)))
+
+				bs = self.bservers.getserver()
+				logging.warning("Koneksi dari {} akan di teruskan ke {}".format(addr, bs))
+				backend = Backend(bs)
+
+				handler = ProcessTheClient(sock)
+				handler.backend = backend
 
 
 
 def main():
-	svr = Server()
+	portnumber = 44444
+	try:
+		portnumber = int(sys.argv[1])
+	except:
+		pass
+	svr = Server(portnumber)
 	asyncore.loop()
 
 if __name__=="__main__":
