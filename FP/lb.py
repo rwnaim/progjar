@@ -4,13 +4,13 @@ import sys
 import asyncore
 import logging
 
-flag = 0
-portnum = 8000
+jml_req = 0
+port = 8000
 
 class BackendList:
 	def __init__(self):
 		self.servers=[]
-		self.servers.append(('127.0.0.1',8000))
+		self.servers.append(('127.0.0.1',9000))
 		self.current=0
 	def getserver(self):
 		s = self.servers[self.current]
@@ -20,9 +20,9 @@ class BackendList:
 		return s
 
 	def addserver(self):
-		global portnum
-		portnum += 1
-		self.servers.append(('127.0.0.1', portnum))
+		global port
+		port += 1
+		self.servers.append(('127.0.0.1', port))
 
 class Backend(asyncore.dispatcher_with_send):
 	def __init__(self,targetaddress):
@@ -54,25 +54,25 @@ class ProcessTheClient(asyncore.dispatcher):
 		self.close()
 
 class Server(asyncore.dispatcher):
-	def __init__(self,portnumber):
+	def __init__(self,port_num):
 		asyncore.dispatcher.__init__(self)
 		self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.set_reuse_addr()
-		self.bind(('',portnumber))
+		self.bind(('',port_num))
 		self.listen(5)
 		self.bservers = BackendList()
-		logging.warning("load balancer running on port {}" . format(portnumber))
+		logging.warning("load balancer berjalan di port {}" . format(port_num))
 
 	def handle_accept(self):
 		pair = self.accept()
-		global flag
+		global jml_req
 		if pair is not None:
 			sock, addr = pair
-			logging.warning("connection from {}" . format(repr(addr)))
-			flag+=1
+			logging.warning("Terkoneksi dari {}" . format(repr(addr)))
+			jml_req+=1
 			if (len(self.bservers.servers) < 5):
-				if (flag > 200):
-					flag = 0
+				if (jml_req > 300):
+					jml_req = 0
 					self.bservers.addserver()
 			#menentukan ke server mana request akan diteruskan
 			bs = self.bservers.getserver()
@@ -85,12 +85,12 @@ class Server(asyncore.dispatcher):
 
 
 def main():
-	portnumber=44444
+	port_num=44444
 	try:
-		portnumber=int(sys.argv[1])
+		port_num=int(sys.argv[1])
 	except:
 		pass
-	svr = Server(portnumber)
+	svr = Server(port_num)
 	asyncore.loop()
 
 if __name__=="__main__":
